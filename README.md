@@ -43,6 +43,10 @@ ou com _yarn_
 - _lottie-react-native_: Utilizada para trabalhar com animações, justamente pelo fato de seu funcionamento e criação de componente serem simples.
 - _react-native-iphone-x-helper_: Utilizada para verificar os espaçamentos da tela de Iphones X (ou maior), evitando que algum componente da tela fique atrás do detalhe da tela.
 - _react-native-vector-icons_: Utilizada para exibição de Icones no aplicativo, é de fácil instalação e possui suporte a várias familias de ícones.
+- _axios_: Utilizada para realizar as requisições HTTP baseadas em Promisses, é uma lib muito utilizada que vem sido mantida pela comunidade e transforma respostas em JSON automáticamente.
+- _redux_: Utilizada para o gerenciamento de estados na aplicação, sendo possivel acessar um determinado estado de qualquer componente, sem a necessidade de ficar repassando o mesmo por propriedades.
+- _redux-saga_: Utilizado para interceptar ações do redux, para realizar requisições HTTP;
+- _immer_: 
 
 # Dependências Desenvolvedor
 - _eslint_: Utilizada realização de ajuste de código automático e verificação de erros na escrita para ser mantido um padrão de código.

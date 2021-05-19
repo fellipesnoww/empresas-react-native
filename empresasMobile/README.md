@@ -36,3 +36,8 @@ ou com _yarn_
 ```bash
     yarn android | ios
 ```
+
+
+# Dependências Utilizadas
+- _eslint_: Utilizada realização de ajuste de código automático e verificação de erros na escrita.
+- _styled-components_: Utilizada para criar componentes estilizados usando sintaxe do CSS3.

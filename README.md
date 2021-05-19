@@ -42,3 +42,4 @@ ou com _yarn_
 - _eslint_: Utilizada realização de ajuste de código automático e verificação de erros na escrita para ser mantido um padrão de código.
 - _styled-components_: Utilizada para criar componentes estilizados usando sintaxe do CSS3.
 - _eslint-import-resolver-typescript_: Utilizada para fazer com que o React "entenda" os arquivos TypeScript
+- _lottie-react-native_: Utilizada para trabalhar com animações.

@@ -39,7 +39,17 @@ ou com _yarn_
 
 
 # Dependências Utilizadas
+- _styled-components_: Utilizada para a criação de componentes do React Native utilizando sintaxe do CSS, isso facilita no momento do desenvolvimento.
+- _lottie-react-native_: Utilizada para trabalhar com animações, justamente pelo fato de seu funcionamento e criação de componente serem simples.
+- _react-native-iphone-x-helper_: Utilizada para verificar os espaçamentos da tela de Iphones X (ou maior), evitando que algum componente da tela fique atrás do detalhe da tela.
+- _react-native-vector-icons_: Utilizada para exibição de Icones no aplicativo, é de fácil instalação e possui suporte a várias familias de ícones.
+
+# Dependências Desenvolvedor
 - _eslint_: Utilizada realização de ajuste de código automático e verificação de erros na escrita para ser mantido um padrão de código.
-- _styled-components_: Utilizada para criar componentes estilizados usando sintaxe do CSS3.
-- _eslint-import-resolver-typescript_: Utilizada para fazer com que o React "entenda" os arquivos TypeScript
-- _lottie-react-native_: Utilizada para trabalhar com animações.
+- _eslint-config-airbnb_: 
+- _eslint-config-airbnb-base_: 
+- _eslint-config-prettier_: 
+- _eslint-import-resolver-typescript_: Utilizada para fazer com que o React "entenda" os arquivos TypeScript. 
+- _eslint-plugin-import_: 
+- _eslint-plugin-prettier_: 
+- _eslint-plugin-react_: 

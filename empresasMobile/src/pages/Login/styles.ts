@@ -1,6 +1,11 @@
-import { Platform } from 'react-native';
+import { Platform, TextInputProps } from 'react-native';
 import { getBottomSpace } from 'react-native-iphone-x-helper';
 import styled from 'styled-components/native';
+
+interface InputCustomProps extends TextInputProps{
+  focused: boolean;
+  filled: boolean;
+}
 
 export const Container = styled.View`
   flex: 1;
@@ -18,14 +23,20 @@ export const Title = styled.Text`
   margin: 10px 0;
 `;
 
-export const InputText = styled.TextInput`
+export const ContainerInput = styled.View<InputCustomProps>`
   width: 300px;
   height: 60px;
-  padding: 0 20px;
+  flex-direction: row;
+  padding: 0 15px;
   border-radius: 8px;
-  border: #000;
+  align-items: center;
+  border: ${props => props.focused || props.filled ? '#03fc30' : '#666360'} solid 2px;
   margin: 10px 0;
+`;
+
+export const InputText = styled.TextInput`
   font-size: 18px;
+  width: 100%;
 `;
 
 export const ForgotPasswordContainer = styled.View`

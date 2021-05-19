@@ -13,6 +13,7 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		A5966B4A0EC56F2F5CBB5EC8 /* libPods-empresasMobile-empresasMobileTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 05FB4E7EBC2C0A201E17B0B1 /* libPods-empresasMobile-empresasMobileTests.a */; };
+		CE56C90326554C9D006E0C55 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE56C90226554C9D006E0C55 /* File.swift */; };
 		DFC1FC94E52B455B404A9F2D /* libPods-empresasMobile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D36C5B5AA6AAA8F3054426E /* libPods-empresasMobile.a */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +44,8 @@
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = empresasMobile/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		896DB4ACBC5D45AD39190D62 /* Pods-empresasMobile.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-empresasMobile.debug.xcconfig"; path = "Target Support Files/Pods-empresasMobile/Pods-empresasMobile.debug.xcconfig"; sourceTree = "<group>"; };
 		8D36C5B5AA6AAA8F3054426E /* libPods-empresasMobile.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-empresasMobile.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE56C90126554C9D006E0C55 /* empresasMobile-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "empresasMobile-Bridging-Header.h"; sourceTree = "<group>"; };
+		CE56C90226554C9D006E0C55 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -116,12 +119,14 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				CE56C90226554C9D006E0C55 /* File.swift */,
 				13B07FAE1A68108700A75B9A /* empresasMobile */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* empresasMobileTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				EC4E4263AB9B55BDFB80ED38 /* Pods */,
+				CE56C90126554C9D006E0C55 /* empresasMobile-Bridging-Header.h */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -145,7 +150,6 @@
 				651A755DC7C232863B006B76 /* Pods-empresasMobile-empresasMobileTests.debug.xcconfig */,
 				53ECC1DA51E47F7AD4129403 /* Pods-empresasMobile-empresasMobileTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -208,7 +212,7 @@
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
-						LastSwiftMigration = 1120;
+						LastSwiftMigration = 1210;
 					};
 				};
 			};
@@ -412,6 +416,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
+				CE56C90326554C9D006E0C55 /* File.swift in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -431,6 +436,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 651A755DC7C232863B006B76 /* Pods-empresasMobile-empresasMobileTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -458,6 +464,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 53ECC1DA51E47F7AD4129403 /* Pods-empresasMobile-empresasMobileTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
 				INFOPLIST_FILE = empresasMobileTests/Info.plist;
@@ -498,6 +505,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = empresasMobile;
+				SWIFT_OBJC_BRIDGING_HEADER = "empresasMobile-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -523,6 +531,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = empresasMobile;
+				SWIFT_OBJC_BRIDGING_HEADER = "empresasMobile-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};

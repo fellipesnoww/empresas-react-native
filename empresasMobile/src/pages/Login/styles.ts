@@ -1,3 +1,5 @@
+import { Platform } from 'react-native';
+import { getBottomSpace } from 'react-native-iphone-x-helper';
 import styled from 'styled-components/native';
 
 export const Container = styled.View`
@@ -38,7 +40,7 @@ export const Label = styled.Text`
 
 export const CreateAccountContainer = styled.View`
   align-items: center;
-  margin-bottom: 40px;
+  margin-bottom: ${Platform.OS === "ios" ? getBottomSpace() + "px": "40px"};
 `;
 
 export const TextButton = styled.Text`

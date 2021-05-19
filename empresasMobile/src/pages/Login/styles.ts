@@ -40,3 +40,9 @@ export const CreateAccountContainer = styled.View`
   align-items: center;
   margin-bottom: 40px;
 `;
+
+export const TextButton = styled.Text`
+  color: #000;
+  font-size: 18px;
+  font-weight: bold;
+`;

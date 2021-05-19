@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {} from 'react-native';
 
 import {
@@ -9,11 +9,20 @@ import {
   ForgotPasswordContainer,
   Label,
   CreateAccountContainer,
+  TextButton,
 } from './styles';
 import logoImg from '../../assets/logo_ioasys.png';
 import Button from '../../components/Button';
+import LoaderButton from '../../components/LoaderButton';
 
 const Login: React.FC = () => {
+
+  const [loading, setLoading] = useState(false);
+
+  function handleSignIn(){
+    setLoading(true);
+  }
+
   return (
     <>
       <Container>
@@ -24,7 +33,11 @@ const Login: React.FC = () => {
         <ForgotPasswordContainer>
           <Label>Esqueci minha senha</Label>
         </ForgotPasswordContainer>
-        <Button title="Entrar" />
+        <Button onPress={handleSignIn}>
+          {loading ?
+            (<LoaderButton />)
+            : (<TextButton>Entrar</TextButton>)}
+        </Button>
       </Container>
       <CreateAccountContainer>
         <Label>Quero me cadastrar</Label>

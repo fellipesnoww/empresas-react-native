@@ -9,8 +9,3 @@ export const Container = styled.TouchableOpacity`
   justify-content: center;
 `;
 
-export const Label = styled.Text`
-  color: #000;
-  font-size: 18px;
-  font-weight: bold;
-`;

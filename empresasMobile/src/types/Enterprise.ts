@@ -9,6 +9,7 @@ export interface Enterprise{
   enterprise_name: string;
   photo: string;
   description: string;
+  shares: number;
   city: string;
   country: string;
   value: number;

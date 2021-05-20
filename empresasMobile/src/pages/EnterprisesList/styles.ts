@@ -1,7 +1,5 @@
 import styled from 'styled-components/native';
 import { FlatList } from 'react-native';
-
-import {getStatusBarHeight} from 'react-native-iphone-x-helper';
 import { Enterprise } from '../../types/Enterprise';
 
 export const Container = styled.View`

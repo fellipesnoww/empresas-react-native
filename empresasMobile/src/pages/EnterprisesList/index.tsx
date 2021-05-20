@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Alert, View } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { Container, TextHeader, HeaderContainer, Header, Greeting, LogoutButton, TextHeaderBold, SubtitleContainer, Subtitle, Content, NotFoundMessage, SearchButton, EnterpriseList, EnterpriseCard, EnterpriseName, ImageEnterprise, EnterpriseAbout, EnterpriseAddress, EnterpriseTextInfo } from './styles';
+import { Container, TextHeader, Header, Greeting, LogoutButton, TextHeaderBold, SubtitleContainer, Subtitle, Content, NotFoundMessage, SearchButton, EnterpriseList, EnterpriseCard, EnterpriseName, ImageEnterprise, EnterpriseAbout, EnterpriseAddress, EnterpriseTextInfo } from './styles';
 import api from '../../services/api';
 import { AxiosResponse } from 'axios';
 import { Enterprise } from '../../types/Enterprise';
@@ -11,9 +11,7 @@ import { IUserAuthenticated } from '../../store/modules/authentication/types';
 import Icon from 'react-native-vector-icons/Feather';
 import Loader from '../../components/Loader';
 import { logout } from '../../store/modules/authentication/actions';
-import { useRoute, RouteProp } from '@react-navigation/native';
-import { iteratorSymbol } from 'immer/dist/internal';
-
+import { useRoute, RouteProp, useNavigation } from '@react-navigation/native';
 
 interface CustomParams{
   enterpriseName: string;
@@ -37,6 +35,7 @@ const EnterprisesList: React.FC = () => {
   const [enterpriseType, setEnterpriseType] = useState(0);
 
   const route = useRoute<RouteProp<any, any>>();
+  const navigation = useNavigation();
 
   async function loadEnterprises(name = "", typeId = 0){
     try {
@@ -67,9 +66,12 @@ const EnterprisesList: React.FC = () => {
     dispatch(logout(true));
   }
 
+  function handleNavigate(id: number){
+    navigation.navigate("EnterpriseDetails", {idEnterprise: id});
+  }
+
   useEffect(() => {
     const routeParams = route.params as CustomParams;
-    console.log(routeParams);
     setEnterpriseName(routeParams?.enterpriseName);
     setEnterpriseType(routeParams?.typeId);
     setLoading(true);
@@ -116,10 +118,9 @@ const EnterprisesList: React.FC = () => {
                         <EnterpriseName>{enterprise.enterprise_name}</EnterpriseName>
                         <EnterpriseAddress>{enterprise.city} • {enterprise.country}</EnterpriseAddress>
                         <EnterpriseAddress>{enterprise.enterprise_type.enterprise_type_name}</EnterpriseAddress>
-
                       </EnterpriseTextInfo>
                     </EnterpriseAbout>
-                    <Icon name="chevron-right" size={24} color="#000"/>
+                    <Icon name="chevron-right" size={24} color="#000" onPress={() => handleNavigate(enterprise.id)}/>
                   </EnterpriseCard>
                 )}
               />

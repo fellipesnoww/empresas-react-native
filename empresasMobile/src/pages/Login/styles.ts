@@ -11,7 +11,6 @@ export const Container = styled.View`
   flex: 1;
   align-items: center;
   justify-content: center;
-  background-color: #dbd9d9;
 `;
 
 export const LogoImage = styled.Image`

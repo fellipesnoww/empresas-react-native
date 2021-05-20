@@ -38,7 +38,7 @@ const AppRoutes: React.FC = () =>(
       inactiveTintColor: "#000",
       labelPosition: 'beside-icon',
       style: {
-          paddingVertical: Platform.OS === "android" ? 0 : 20 ,
+          paddingVertical: Platform.OS === "android" ? 0 : 10 ,
           height: 88
       }
     }}
@@ -50,14 +50,6 @@ const AppRoutes: React.FC = () =>(
         title: "Empresas",
     }}
     component={EnterprisesStack} />
-    <App.Screen name="Favorites"
-      options={{
-        tabBarIcon: ({ color, focused }) => (
-            <Icon name="heart" size={25} color={color} />
-        ),
-        title: "Favoritos"
-      }}
-    component={Favorites} />
     <App.Screen name="Search"
       options={{
         tabBarIcon: ({ color, focused }) => (
@@ -66,6 +58,14 @@ const AppRoutes: React.FC = () =>(
         title: "Pesquisar"
       }}
     component={Search} />
+    <App.Screen name="Favorites"
+      options={{
+        tabBarIcon: ({ color, focused }) => (
+            <Icon name="heart" size={25} color={color} />
+        ),
+        title: "Favoritos"
+      }}
+    component={Favorites} />
   </App.Navigator>
 )
 

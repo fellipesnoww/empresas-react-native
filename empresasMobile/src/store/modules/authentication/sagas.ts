@@ -15,18 +15,20 @@ interface ILoginResponse{
 }
 
 function* signInUser({payload}: SignInUserRequest){
+  try {
+
     const {login} = payload;
 
-    const loginResponse:AxiosResponse<ILoginResponse> = yield call(api.post, `/api/v1/users/auth/sign_in`, login);
+    const loginResponse:AxiosResponse<ILoginResponse> = yield call(api.post, `api/v1/users/auth/sign_in`, login);
 
-    if(loginResponse.data.success){
-      const {uid, client, access_token} = loginResponse.headers;
+    if(loginResponse?.data.success){
+      const {uid, client} = loginResponse.headers;
 
       const authenticatedUser: IUserAuthenticated = {
         investor: loginResponse.data.investor,
         uid,
         client,
-        access_token,
+        access_token: loginResponse.headers["access-token"],
         success: loginResponse.data.success
       }
       yield put(signInSuccess(authenticatedUser));
@@ -34,6 +36,11 @@ function* signInUser({payload}: SignInUserRequest){
     else{
       yield put(signInFailure({errors: loginResponse.data.errors, success: loginResponse.data.success}));
     }
+
+  } catch (error) {
+      yield put(signInFailure({errors: ["Houveram erros ao realizar login"], success: false}));
+
+  }
 }
 
 export default all([

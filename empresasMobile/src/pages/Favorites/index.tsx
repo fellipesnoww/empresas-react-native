@@ -3,8 +3,8 @@ import { View } from 'react-native';
 
 // import { Container } from './styles';
 
-const EnterprisesList: React.FC = () => {
+const Favorites: React.FC = () => {
   return <View />;
 }
 
-export default EnterprisesList;
+export default Favorites;

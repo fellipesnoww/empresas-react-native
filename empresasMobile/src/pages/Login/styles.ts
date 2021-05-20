@@ -36,7 +36,7 @@ export const ContainerInput = styled.View<InputCustomProps>`
 
 export const InputText = styled.TextInput`
   font-size: 18px;
-  width: 100%;
+  width: 80%;
 `;
 
 export const ForgotPasswordContainer = styled.View`

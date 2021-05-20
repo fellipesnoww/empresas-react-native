@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import {} from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
+import { useDispatch } from 'react-redux';
 
 import {
   Container,
@@ -16,6 +17,7 @@ import {
 import logoImg from '../../assets/logo_ioasys.png';
 import Button from '../../components/Button';
 import LoaderButton from '../../components/LoaderButton';
+import { signInRequest } from '../../store/modules/authentication/actions';
 
 const Login: React.FC = () => {
 
@@ -27,9 +29,11 @@ const Login: React.FC = () => {
   const [passwordFilled, setPassowordFilled] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
 
   function handleSignIn(){
     console.log(email, password);
+    dispatch(signInRequest({email, password}))
     setLoading(true);
   }
 
@@ -96,11 +100,21 @@ const Login: React.FC = () => {
             onChangeText={(value: string) => handleChangePasswordText(value)}
             secureTextEntry={showPassword}
           />
+          <Icon
+            name={showPassword ? "eye-off" : "eye"}
+            size={22}
+            color={passwordFilled || passwordFocused ? "#03fc30" : "#666360"}
+            style={{}}
+            onPress={() => setShowPassword(oldState => !oldState)}
+          />
         </ContainerInput>
         <ForgotPasswordContainer>
           <Label>Esqueci minha senha</Label>
         </ForgotPasswordContainer>
-        <Button onPress={handleSignIn}>
+        <Button
+          onPress={handleSignIn}
+          disabled={!emailFilled && !passwordFilled}
+        >
           {loading ?
             (<LoaderButton />)
             : (<TextButton>Entrar</TextButton>)}

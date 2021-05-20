@@ -47,7 +47,13 @@ ou com _yarn_
 - _redux_: Utilizada para o gerenciamento de estados na aplicação, sendo possivel acessar um determinado estado de qualquer componente, sem a necessidade de ficar repassando o mesmo por propriedades.
 - _redux-saga_: Utilizado para interceptar ações do redux, para realizar requisições HTTP;
 - _immer_: 
-
+- _@react-navigation/native_: 
+- _react-native-reanimated_: 
+- _react-native-gesture-handler_:
+- _react-native-screens_:
+- _react-native-safe-area-context_:
+- _@react-native-community/masked-view_: 
+- _@react-navigation/material-bottom-tabs_: 
 # Dependências Desenvolvedor
 - _eslint_: Utilizada realização de ajuste de código automático e verificação de erros na escrita para ser mantido um padrão de código.
 - _eslint-config-airbnb_: 

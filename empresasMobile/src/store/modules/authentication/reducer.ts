@@ -4,27 +4,33 @@ import {ActionTypes, IUserAuthenticated} from './types';
 import { Alert } from 'react-native';
 
 const INITIAL_STATE: IUserAuthenticated = {
-    investor: undefined,
+    investor: null,
     access_token: "",
     client: "",
     uid: "",
-    authenticated: false,
+    success: false
 }
 
-const cart: Reducer<IUserAuthenticated> = (state = INITIAL_STATE, action) => {
+const authentication: Reducer<IUserAuthenticated> = (state = INITIAL_STATE, action) => {
     return produce(state, draft => {
         switch(action.type){
             case ActionTypes.signInSuccess:{
                 const { authenticatedUser } = action.payload;
-                draft = authenticatedUser;
-                console.log('Draft Result', draft);
+
+                Object.assign(draft, {
+                  investor: authenticatedUser.investor,
+                  access_token: authenticatedUser.access_token,
+                  client: authenticatedUser.client,
+                  uid: authenticatedUser.uid,
+                  success: authenticatedUser.success
+                });
+
                 break;
             }
 
             case ActionTypes.signInFailure:{
                 draft = INITIAL_STATE;
                 Alert.alert("Ops, erro ao realizar login", "Parece que seu login ou senha estão incorretos, verifique e tente novamente.")
-                console.log('Draft Result', draft);
                 break;
             }
             default: {
@@ -34,4 +40,4 @@ const cart: Reducer<IUserAuthenticated> = (state = INITIAL_STATE, action) => {
     });
 }
 
-export default cart;
+export default authentication;

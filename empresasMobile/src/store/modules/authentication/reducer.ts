@@ -33,6 +33,21 @@ const authentication: Reducer<IUserAuthenticated> = (state = INITIAL_STATE, acti
                 Alert.alert("Ops, erro ao realizar login", "Parece que seu login ou senha estão incorretos, verifique e tente novamente.")
                 break;
             }
+
+            case ActionTypes.logout: {
+              const { logout } = action.payload;
+
+              Object.assign(draft, {
+                investor: INITIAL_STATE.investor,
+                access_token: INITIAL_STATE.access_token,
+                client: INITIAL_STATE.client,
+                uid: INITIAL_STATE.uid,
+                success: !logout
+              });
+
+              break;
+            }
+
             default: {
                 return draft;
             }

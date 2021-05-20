@@ -32,7 +32,6 @@ const Login: React.FC = () => {
   const dispatch = useDispatch();
 
   function handleSignIn(){
-    console.log(email, password);
     dispatch(signInRequest({email, password}))
     setLoading(true);
   }

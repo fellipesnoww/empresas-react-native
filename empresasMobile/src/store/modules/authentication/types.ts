@@ -2,6 +2,7 @@ export enum ActionTypes{
   signInRequest = 'SIGN_IN_REQUEST',
   signInSuccess = 'SIGN_IN_SUCCESS',
   signInFailure = 'SIGN_IN_FAILURE',
+  logout = 'LOGOUT_USER'
 }
 
 export interface ILogin{

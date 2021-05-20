@@ -4,13 +4,14 @@ import AuthRoutes from './auth.routes';
 import AppRoutes from './app.routes'
 import { useSelector } from 'react-redux';
 import { IState } from '../store';
+import { IUserAuthenticated } from '../store/modules/authentication/types';
 
 const Routes: React.FC = () => {
-    const reduxState = useSelector<IState, IState>(state => state);
-    console.log('REDUX>', reduxState);
+    const reduxState = useSelector<IState, IUserAuthenticated>(state => state.authentication);
+
     return (
       <NavigationContainer>
-      { !reduxState.authentication.success ?
+      { !reduxState.success ?
         ( <AuthRoutes /> )
         :
         ( <AppRoutes /> )

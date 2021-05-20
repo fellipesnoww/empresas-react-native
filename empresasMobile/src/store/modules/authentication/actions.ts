@@ -26,3 +26,10 @@ export function signInFailure(authenticationResponse: IUserAuthenticationError){
     }
   }
 }
+
+export function logout(logout: boolean){
+  return {
+    type: ActionTypes.logout,
+    payload: {logout}
+  }
+}

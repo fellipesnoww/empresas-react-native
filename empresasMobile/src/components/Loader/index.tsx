@@ -3,20 +3,20 @@ import { View } from 'react-native';
 import LottieView from 'lottie-react-native';
 import { Container } from './styles';
 
-import loadAnimation from '../../assets/button-loader.json';
+import loaderAnimation from '../../assets/loader.json';
 
-const Loader: React.FC = () => {
+const LoaderButton: React.FC = () => {
   return (
     <Container>
       <LottieView
-              source={loadAnimation}
+              source={loaderAnimation}
               autoPlay
               loop
               style={
                 {
                   backgroundColor: 'transparent',
-                  width: 50,
-                  height: 50
+                  width: 200,
+                  height: 200
                 }
               }
             />
@@ -24,4 +24,4 @@ const Loader: React.FC = () => {
   );
 }
 
-export default Loader;
+export default LoaderButton;

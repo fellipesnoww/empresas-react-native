@@ -1,5 +1,7 @@
 import styled from 'styled-components/native';
 import { FlatList } from 'react-native';
+import { RectButton } from 'react-native-gesture-handler';
+
 import { Enterprise } from '../../types/Enterprise';
 
 export const Container = styled.View`
@@ -7,38 +9,18 @@ export const Container = styled.View`
   background-color: #FFF;
 `;
 
-export const TextHeader = styled.Text`
-  font-size: 32px;
-`;
-
-export const TextHeaderBold = styled.Text`
-  font-size: 32px;
-  font-weight: bold;
-`;
-
 export const Header = styled.View`
-  width: 100%;
   flex-direction: row;
-  justify-content: space-between;
   align-items: center;
-  padding: 30px 20px;
+  justify-content: center;
+  padding: 10px 15px;
   margin-top: 40px;
 `;
 
-export const Greeting = styled.View`
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
+export const EnterpriseNameTitle = styled.Text`
+  font-size: 28px;
 `;
 
-export const LogoutButton = styled.TouchableOpacity`
-  width: 60px;
-  height: 60px;
-  align-items: center;
-  justify-content: center;
-  background-color: #c43f3f;
-  border-radius: 8px;
-`;
 
 export const SubtitleContainer = styled.View`
   flex-direction: row;
@@ -75,15 +57,16 @@ padding: 0 10px;
 `;
 
 export const EnterpriseCard = styled.View`
-  width: 350px;
+  width: 340px;
   height: 75px;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   margin: 5px 0;
   padding: 0 10px;
   border-radius: 8px;
   border: solid #000 1px;
   flex-direction: row;
+  background-color: #FFF
 `;
 
 export const EnterpriseTextInfo = styled.View`
@@ -107,4 +90,17 @@ export const ImageEnterprise = styled.Image`
   width: 50px;
   height: 50px;
   border-radius: 25px;
+  margin-right: 25px;
 `;
+
+
+export const RemoveButton = styled(RectButton).attrs({})`
+  width: 90px;
+  height: 72px;
+  background-color: red;
+  border-radius: 20px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 8px;
+  right: 12px;
+`

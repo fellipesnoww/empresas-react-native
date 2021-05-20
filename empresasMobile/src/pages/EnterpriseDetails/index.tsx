@@ -10,6 +10,8 @@ import api from '../../services/api';
 import { IState } from '../../store';
 import { IUserAuthenticated } from '../../store/modules/authentication/types';
 import { Enterprise } from '../../types/Enterprise';
+import Loader from '../../components/Loader';
+import { save } from '../../libs/storeEnterprises';
 
 interface CustomParams{
   idEnterprise: number;
@@ -24,6 +26,7 @@ const EnterpriseDetails: React.FC = () => {
   const navigation = useNavigation();
   const reduxState = useSelector<IState, IUserAuthenticated>(state => state.authentication);
   const [enterprise, setEnterprise] = useState<Enterprise>();
+  const [loading, setLoading] = useState(false);
 
   function handleGoBack(){
     navigation.goBack();
@@ -31,6 +34,7 @@ const EnterpriseDetails: React.FC = () => {
 
   async function getEnterpriseData(id: number){
     try {
+      setLoading(true);
       const response:AxiosResponse<IResponse> = await api.get(`api/v1/enterprises/${id}`, {
         headers: {
           "access-token": reduxState.access_token,
@@ -40,6 +44,7 @@ const EnterpriseDetails: React.FC = () => {
       });
 
       setEnterprise(response.data.enterprise);
+      setLoading(false);
 
     } catch (error) {
       console.log(error);
@@ -47,6 +52,7 @@ const EnterpriseDetails: React.FC = () => {
       handleGoBack();
     }
   }
+
   useEffect(() => {
     const params = route.params as CustomParams;
     getEnterpriseData(params.idEnterprise);
@@ -61,12 +67,24 @@ const EnterpriseDetails: React.FC = () => {
 
   }
 
+  async function handleAddFavorite(enterprise: Enterprise | undefined): Promise<void>{
+    try {
+      await save(enterprise as Enterprise);
+    } catch (error) {
+      Alert.alert('Erro ao adicionar favorito', 'Voce já adicionou essa empresa aos favoritos');
+    }
+  }
   return (
     <Container>
+      {loading ? (
+        <Loader />
+      ):
+      (
+      <>
       <Header>
         <Icon name="chevron-left" size={25} color="#03fc30" onPress={handleGoBack}/>
         <EnterpriseNameTitle>{enterprise?.enterprise_name}</EnterpriseNameTitle>
-        <Icon name="heart" size={25} color="#03fc30"/>
+        <Icon name="heart" size={25} color="#03fc30" onPress={() => {handleAddFavorite(enterprise)}}/>
       </Header>
       <ContentScroll>
         <EnterpriseContent>
@@ -94,6 +112,9 @@ const EnterpriseDetails: React.FC = () => {
           </ContactsContainer>
         </EnterpriseContent>
       </ContentScroll>
+      </>
+      )}
+
     </Container>
   );
 }

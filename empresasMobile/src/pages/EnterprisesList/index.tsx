@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Alert, View } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { Container, TextHeader, Header, Greeting, LogoutButton, TextHeaderBold, SubtitleContainer, Subtitle, Content, NotFoundMessage, SearchButton, EnterpriseList, EnterpriseCard, EnterpriseName, ImageEnterprise, EnterpriseAbout, EnterpriseAddress, EnterpriseTextInfo } from './styles';
+import { Container, TextHeader, Header, Greeting, LogoutButton, TextHeaderBold, SubtitleContainer, Subtitle, Content, NotFoundMessage, EnterpriseList, EnterpriseCard, EnterpriseName, ImageEnterprise, EnterpriseAbout, EnterpriseAddress, EnterpriseTextInfo } from './styles';
 import api from '../../services/api';
 import { AxiosResponse } from 'axios';
 import { Enterprise } from '../../types/Enterprise';

@@ -5,8 +5,8 @@ import { RectButton } from 'react-native-gesture-handler';
 import { Enterprise } from '../../types/Enterprise';
 
 export const Container = styled.View`
-  flex:1;
-  background-color: #FFF;
+  flex: 1;
+  background-color: #fff;
 `;
 
 export const Header = styled.View`
@@ -21,7 +21,6 @@ export const EnterpriseNameTitle = styled.Text`
   font-size: 28px;
 `;
 
-
 export const SubtitleContainer = styled.View`
   flex-direction: row;
   justify-content: space-between;
@@ -32,7 +31,6 @@ export const SubtitleContainer = styled.View`
 export const Subtitle = styled.Text`
   font-size: 18px;
 `;
-
 
 export const Content = styled.View`
   align-items: center;
@@ -47,13 +45,12 @@ export const NotFoundMessage = styled.Text`
   margin-bottom: 15px;
 `;
 
-
 export const EnterpriseList = styled(
   FlatList as new () => FlatList<Enterprise>,
 ).attrs({
   numColumns: 1,
 })`
-padding: 0 10px;
+  padding: 0 10px;
 `;
 
 export const EnterpriseCard = styled.View`
@@ -66,7 +63,7 @@ export const EnterpriseCard = styled.View`
   border-radius: 8px;
   border: solid #000 1px;
   flex-direction: row;
-  background-color: #FFF
+  background-color: #fff;
 `;
 
 export const EnterpriseTextInfo = styled.View`
@@ -94,7 +91,6 @@ export const ImageEnterprise = styled.Image`
   border-radius: 25px;
 `;
 
-
 export const RemoveButton = styled(RectButton).attrs({})`
   width: 90px;
   height: 72px;
@@ -104,4 +100,4 @@ export const RemoveButton = styled(RectButton).attrs({})`
   align-items: center;
   margin-top: 8px;
   right: 12px;
-`
+`;

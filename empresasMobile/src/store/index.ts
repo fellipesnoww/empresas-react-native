@@ -1,12 +1,12 @@
 import { applyMiddleware, createStore } from 'redux';
-import { IUserAuthenticated } from './modules/authentication/types';
 import createSagaMiddleware from 'redux-saga';
+import { IUserAuthenticated } from './modules/authentication/types';
 
 import rootReducer from './modules/rootReducer';
 import rootSaga from './modules/rootSaga';
 
-export interface IState{
-    authentication: IUserAuthenticated;
+export interface IState {
+  authentication: IUserAuthenticated;
 }
 
 const sagaMiddleware = createSagaMiddleware();

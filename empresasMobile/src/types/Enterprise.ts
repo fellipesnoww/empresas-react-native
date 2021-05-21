@@ -1,4 +1,5 @@
-export interface Enterprise{
+/* eslint-disable camelcase */
+export interface Enterprise {
   id: number;
   email_enterprise: string;
   facebook: string;
@@ -14,10 +15,10 @@ export interface Enterprise{
   country: string;
   value: number;
   share_price: number;
-  enterprise_type:EnterpriseType;
+  enterprise_type: EnterpriseType;
 }
 
-export interface EnterpriseType{
+export interface EnterpriseType {
   id: number;
   enterprise_type_name: string;
 }

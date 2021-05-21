@@ -3,8 +3,8 @@ import { FlatList } from 'react-native';
 import { Enterprise } from '../../types/Enterprise';
 
 export const Container = styled.View`
-  flex:1;
-  background-color: #FFF;
+  flex: 1;
+  background-color: #fff;
 `;
 
 export const TextHeader = styled.Text`
@@ -51,7 +51,6 @@ export const Subtitle = styled.Text`
   font-size: 18px;
 `;
 
-
 export const Content = styled.View`
   align-items: center;
   justify-content: center;
@@ -65,13 +64,12 @@ export const NotFoundMessage = styled.Text`
   margin-bottom: 15px;
 `;
 
-
 export const EnterpriseList = styled(
   FlatList as new () => FlatList<Enterprise>,
 ).attrs({
   numColumns: 1,
 })`
-padding: 0 10px;
+  padding: 0 10px;
 `;
 
 export const EnterpriseCard = styled.View`

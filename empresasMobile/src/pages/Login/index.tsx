@@ -20,37 +20,35 @@ import LoaderButton from '../../components/LoaderButton';
 import { signInRequest } from '../../store/modules/authentication/actions';
 
 const Login: React.FC = () => {
-
   const [loading, setLoading] = useState(false);
   const [emailFocused, setEmailFocused] = useState(false);
   const [emailFilled, setEmailFilled] = useState(false);
   const [passwordFocused, setPasswordFocused] = useState(false);
   const [showPassword, setShowPassword] = useState(true);
   const [passwordFilled, setPassowordFilled] = useState(false);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const dispatch = useDispatch();
 
-  function handleSignIn(){
-    dispatch(signInRequest({email, password}))
+  function handleSignIn() {
+    dispatch(signInRequest({ email, password }));
     setLoading(true);
   }
 
-  function handleChangeEmailText(value: string): void{
+  function handleChangeEmailText(value: string): void {
     setEmail(value);
 
-    if(value) {
+    if (value) {
       setEmailFilled(true);
     } else {
       setEmailFilled(false);
     }
-
   }
 
-  function handleChangePasswordText(value: string): void{
+  function handleChangePasswordText(value: string): void {
     setPassword(value);
 
-    if(value) {
+    if (value) {
       setPassowordFilled(true);
     } else {
       setPassowordFilled(false);
@@ -62,16 +60,13 @@ const Login: React.FC = () => {
       <Container>
         <LogoImage source={logoImg} />
         <Title>Faça seu Login</Title>
-        <ContainerInput
-          focused={emailFocused}
-          filled={emailFilled}
-        >
+        <ContainerInput focused={emailFocused} filled={emailFilled}>
           <Icon
             name="user"
             size={22}
-            color={emailFilled || emailFocused ? "#03fc30" : "#666360"}
-            style={{marginRight: 10}}
-            />
+            color={emailFilled || emailFocused ? '#03fc30' : '#666360'}
+            style={{ marginRight: 10 }}
+          />
 
           <InputText
             placeholder="Seu e-email"
@@ -82,15 +77,12 @@ const Login: React.FC = () => {
             keyboardType="email-address"
           />
         </ContainerInput>
-        <ContainerInput
-          focused={passwordFocused}
-          filled={passwordFilled}
-        >
+        <ContainerInput focused={passwordFocused} filled={passwordFilled}>
           <Icon
             name="lock"
             size={22}
-            color={passwordFilled || passwordFocused ? "#03fc30" : "#666360"}
-            style={{marginRight: 10}}
+            color={passwordFilled || passwordFocused ? '#03fc30' : '#666360'}
+            style={{ marginRight: 10 }}
           />
           <InputText
             placeholder="Sua senha secreta"
@@ -100,9 +92,9 @@ const Login: React.FC = () => {
             secureTextEntry={showPassword}
           />
           <Icon
-            name={showPassword ? "eye-off" : "eye"}
+            name={showPassword ? 'eye-off' : 'eye'}
             size={22}
-            color={passwordFilled || passwordFocused ? "#03fc30" : "#666360"}
+            color={passwordFilled || passwordFocused ? '#03fc30' : '#666360'}
             style={{}}
             onPress={() => setShowPassword(oldState => !oldState)}
           />
@@ -111,12 +103,10 @@ const Login: React.FC = () => {
           <Label>Esqueci minha senha</Label>
         </ForgotPasswordContainer>
         <Button
-          onPress={handleSignIn}
+          onPress={() => handleSignIn()}
           disabled={!emailFilled && !passwordFilled}
         >
-          {loading ?
-            (<LoaderButton />)
-            : (<TextButton>Entrar</TextButton>)}
+          {loading ? <LoaderButton /> : <TextButton>Entrar</TextButton>}
         </Button>
       </Container>
       <CreateAccountContainer>

@@ -1,8 +1,8 @@
 import { Platform, TextInputProps } from 'react-native';
-import { getBottomSpace } from 'react-native-iphone-x-helper';
+import { getBottomSpace } from 'react-native-iphone-x-helper';
 import styled from 'styled-components/native';
 
-interface InputCustomProps extends TextInputProps{
+interface InputCustomProps extends TextInputProps {
   focused: boolean;
   filled: boolean;
 }
@@ -30,7 +30,9 @@ export const ContainerInput = styled.View<InputCustomProps>`
   padding: 0 15px;
   border-radius: 8px;
   align-items: center;
-  border: ${props => props.focused || props.filled ? '#03fc30' : '#666360'} solid 2px;
+  border: ${(props: InputCustomProps) =>
+      props.focused || props.filled ? '#03fc30' : '#666360'}
+    solid 2px;
   margin: 10px 0;
 `;
 
@@ -51,7 +53,7 @@ export const Label = styled.Text`
 
 export const CreateAccountContainer = styled.View`
   align-items: center;
-  margin-bottom: ${Platform.OS === "ios" ? getBottomSpace() + "px": "40px"};
+  margin-bottom: ${Platform.OS === 'ios' ? `${getBottomSpace()}px` : '40px'};
 `;
 
 export const TextButton = styled.Text`

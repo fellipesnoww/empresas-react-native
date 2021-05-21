@@ -1,6 +1,7 @@
-import styled from "styled-components/native";
+import styled from 'styled-components/native';
+import { ViewProps } from 'react-native';
 
-interface CustomProps{
+interface CustomProps extends ViewProps {
   dropDownOpen: boolean;
 }
 
@@ -51,11 +52,10 @@ export const Header = styled.View`
   margin-top: 40px;
 `;
 
-
 export const DropdownContent = styled.View<CustomProps>`
   align-items: center;
   justify-content: center;
   padding: 0 45px;
-  margin-bottom: ${props => props.dropDownOpen ? '200px' : '10px'};
-
+  margin-bottom: ${(props: CustomProps) =>
+    props.dropDownOpen ? '200px' : '10px'};
 `;

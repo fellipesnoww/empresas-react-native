@@ -1,17 +1,18 @@
-export enum ActionTypes{
+/* eslint-disable camelcase */
+// eslint-disable-next-line no-shadow
+export enum ActionTypes {
   signInRequest = 'SIGN_IN_REQUEST',
   signInSuccess = 'SIGN_IN_SUCCESS',
   signInFailure = 'SIGN_IN_FAILURE',
-  logout = 'LOGOUT_USER'
+  logout = 'LOGOUT_USER',
 }
 
-export interface ILogin{
+export interface ILogin {
   email: string;
   password: string;
 }
 
-
-export interface Investor{
+export interface Investor {
   id: number;
   investor_name: string;
   email: string;
@@ -20,20 +21,20 @@ export interface Investor{
   balance: number;
   photo: string | null;
   portfolio: {
-      enterprises_number: number;
-      enterprises: []
-  },
+    enterprises_number: number;
+    enterprises: [];
+  };
   portfolio_value: number;
   first_access: boolean;
   super_angel: boolean;
 }
 
-export interface IUserAuthenticationError{
+export interface IUserAuthenticationError {
   errors: string[];
   success: boolean;
 }
 
-export interface IUserAuthenticated{
+export interface IUserAuthenticated {
   investor: Investor | null;
   uid: string;
   client: string;

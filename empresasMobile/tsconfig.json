@@ -17,5 +17,6 @@
       "metro.config.js",
       "jest.config.js"
     ],
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "noImplicitAny": false
   }

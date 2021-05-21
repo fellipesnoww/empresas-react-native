@@ -3,7 +3,7 @@ import { ScrollView } from 'react-native';
 
 export const Container = styled.View`
   flex: 1;
-  background-color: #FFF;
+  background-color: #fff;
 `;
 
 export const Header = styled.View`
@@ -19,7 +19,7 @@ export const EnterpriseNameTitle = styled.Text`
 `;
 
 export const ContentScroll = styled(ScrollView).attrs({
-  showsVerticalScrollIndicator: false
+  showsVerticalScrollIndicator: false,
 })`
   flex: 1;
 `;
@@ -34,7 +34,7 @@ export const EnterpriseContent = styled.View`
 export const AddressContent = styled.View`
   flex-direction: row;
   justify-content: space-between;
-  align-items:flex-start;
+  align-items: flex-start;
   margin: 20px 0;
 `;
 
@@ -51,21 +51,21 @@ export const EnterpriseImage = styled.Image`
 `;
 
 export const About = styled.Text`
-  font-size: 24px;
+  font-size: 18px;
   text-align: justify;
 `;
 
 export const Label = styled.Text`
-  font-size: 24px;
+  font-size: 18px;
 `;
 
 export const LabelShares = styled.Text`
-  font-size: 24px;
+  font-size: 18px;
   margin: 10px 0;
 `;
 
 export const ContactText = styled.Text`
-  font-size: 24px;
+  font-size: 18px;
 `;
 
 export const ContactsContainer = styled.View`

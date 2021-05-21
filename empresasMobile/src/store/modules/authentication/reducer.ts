@@ -1,58 +1,72 @@
+/* eslint-disable consistent-return */
 import { Reducer } from 'redux';
 import produce from 'immer';
-import {ActionTypes, IUserAuthenticated} from './types';
 import { Alert } from 'react-native';
+import { ActionTypes, IUserAuthenticated } from './types';
 
 const INITIAL_STATE: IUserAuthenticated = {
-    investor: null,
-    access_token: "",
-    client: "",
-    uid: "",
-    success: false
-}
+  investor: null,
+  access_token: '',
+  client: '',
+  uid: '',
+  success: false,
+};
 
-const authentication: Reducer<IUserAuthenticated> = (state = INITIAL_STATE, action) => {
-    return produce(state, draft => {
-        switch(action.type){
-            case ActionTypes.signInSuccess:{
-                const { authenticatedUser } = action.payload;
+const authentication: Reducer<IUserAuthenticated> = (
+  state = INITIAL_STATE,
+  action,
+) => {
+  return produce(state, draft => {
+    switch (action.type) {
+      case ActionTypes.signInSuccess: {
+        const { authenticatedUser } = action.payload;
 
-                Object.assign(draft, {
-                  investor: authenticatedUser.investor,
-                  access_token: authenticatedUser.access_token,
-                  client: authenticatedUser.client,
-                  uid: authenticatedUser.uid,
-                  success: authenticatedUser.success
-                });
+        Object.assign(draft, {
+          investor: authenticatedUser.investor,
+          access_token: authenticatedUser.access_token,
+          client: authenticatedUser.client,
+          uid: authenticatedUser.uid,
+          success: authenticatedUser.success,
+        });
 
-                break;
-            }
+        break;
+      }
 
-            case ActionTypes.signInFailure:{
-                draft = INITIAL_STATE;
-                Alert.alert("Ops, erro ao realizar login", "Parece que seu login ou senha estão incorretos, verifique e tente novamente.")
-                break;
-            }
+      case ActionTypes.signInFailure: {
+        Object.assign(draft, {
+          investor: INITIAL_STATE.investor,
+          access_token: INITIAL_STATE.access_token,
+          client: INITIAL_STATE.client,
+          uid: INITIAL_STATE.uid,
+          success: false,
+        });
 
-            case ActionTypes.logout: {
-              const { logout } = action.payload;
+        Alert.alert(
+          'Ops, erro ao realizar login',
+          'Parece que seu login ou senha estão incorretos, verifique e tente novamente.',
+        );
+        break;
+      }
 
-              Object.assign(draft, {
-                investor: INITIAL_STATE.investor,
-                access_token: INITIAL_STATE.access_token,
-                client: INITIAL_STATE.client,
-                uid: INITIAL_STATE.uid,
-                success: !logout
-              });
+      case ActionTypes.logout: {
+        const { logout } = action.payload;
 
-              break;
-            }
+        Object.assign(draft, {
+          investor: INITIAL_STATE.investor,
+          access_token: INITIAL_STATE.access_token,
+          client: INITIAL_STATE.client,
+          uid: INITIAL_STATE.uid,
+          success: !logout,
+        });
 
-            default: {
-                return draft;
-            }
-        }
-    });
-}
+        break;
+      }
+
+      default: {
+        return draft;
+      }
+    }
+  });
+};
 
 export default authentication;

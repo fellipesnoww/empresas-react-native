@@ -18,6 +18,7 @@ export const Label = styled.Text`
 
 export const InputText = styled.TextInput`
   font-size: 18px;
+  color: #000;
 `;
 
 export const ContainerInput = styled.View`

@@ -147,7 +147,7 @@ const Search: React.FC = () => {
         <InputText
           placeholder="Informe o nome da empresa"
           onChangeText={(value: string) => setName(value)}
-          keyboardType="email-address"
+          placeholderTextColor="#000"
         />
       </ContainerInput>
       <DropdownContent dropDownOpen={open}>

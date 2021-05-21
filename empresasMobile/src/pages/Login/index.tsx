@@ -76,6 +76,7 @@ const Login: React.FC = () => {
             onChangeText={(value: string) => handleChangeEmailText(value)}
             autoCapitalize="none"
             keyboardType="email-address"
+            placeholderTextColor="#000"
           />
         </ContainerInput>
         <ContainerInput focused={passwordFocused} filled={passwordFilled}>
@@ -91,6 +92,7 @@ const Login: React.FC = () => {
             onBlur={() => setPasswordFocused(false)}
             onChangeText={(value: string) => handleChangePasswordText(value)}
             secureTextEntry={showPassword}
+            placeholderTextColor="#000"
           />
           <Icon
             name={showPassword ? 'eye-off' : 'eye'}

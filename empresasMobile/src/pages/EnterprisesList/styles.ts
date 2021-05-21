@@ -1,5 +1,5 @@
 import styled from 'styled-components/native';
-import { FlatList } from 'react-native';
+import { FlatList, Platform } from 'react-native';
 import { Enterprise } from '../../types/Enterprise';
 
 export const Container = styled.View`
@@ -22,7 +22,7 @@ export const Header = styled.View`
   justify-content: space-between;
   align-items: center;
   padding: 30px 20px;
-  margin-top: 40px;
+  margin-top: ${Platform.OS === 'android' ? '5px' : '40px'}; ;
 `;
 
 export const Greeting = styled.View`

@@ -1,5 +1,5 @@
 import styled from 'styled-components/native';
-import { ScrollView } from 'react-native';
+import { ScrollView, Platform } from 'react-native';
 
 export const Container = styled.View`
   flex: 1;
@@ -11,7 +11,7 @@ export const Header = styled.View`
   justify-content: space-between;
   align-items: center;
   padding: 10px 15px;
-  margin-top: 40px;
+  margin-top: ${Platform.OS === 'android' ? '5px' : '40px'};
 `;
 
 export const EnterpriseNameTitle = styled.Text`

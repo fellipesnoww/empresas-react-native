@@ -7,6 +7,7 @@ import { Enterprise } from '../../types/Enterprise';
 import Loader from '../../components/Loader';
 import { load, remove } from '../../libs/storeEnterprises';
 import { Swipeable, RectButton } from 'react-native-gesture-handler';
+import { useIsFocused } from '@react-navigation/native';
 
 interface FavoriteFlatList{
   item: Enterprise;
@@ -15,14 +16,14 @@ interface FavoriteFlatList{
 const Favorites: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [favorites, setFavorites] = useState<Enterprise[]>([]);
-
+  const isFocused = useIsFocused();
 
   async function handleRemove(id: number){
     try {
       await remove(id);
       await getFavoritesEnterprise();
     } catch (error) {
-      Alert.alert("Erro ao remover favorito", "Houveram erros ao remover este favorito")
+      Alert.alert("Erro ao remover favorito", "Houveram erros ao remover este favorito");
     }
   }
 
@@ -35,7 +36,7 @@ const Favorites: React.FC = () => {
   useEffect(() => {
 
     getFavoritesEnterprise();
-  }, [loading]);
+  }, [isFocused]);
 
   return (
     <Container>
@@ -77,7 +78,6 @@ const Favorites: React.FC = () => {
                     <EnterpriseTextInfo>
                       <EnterpriseName>{enterprise?.enterprise_name}</EnterpriseName>
                       <EnterpriseAddress>{enterprise?.city} • {enterprise?.country}</EnterpriseAddress>
-                      <EnterpriseAddress>{enterprise?.enterprise_type.enterprise_type_name}</EnterpriseAddress>
                     </EnterpriseTextInfo>
                   </EnterpriseCard>
                 </Swipeable>

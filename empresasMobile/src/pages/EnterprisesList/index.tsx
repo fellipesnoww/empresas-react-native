@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Alert, View } from 'react-native';
+import { Alert, View, Text } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { Container, TextHeader, Header, Greeting, LogoutButton, TextHeaderBold, SubtitleContainer, Subtitle, Content, NotFoundMessage, EnterpriseList, EnterpriseCard, EnterpriseName, ImageEnterprise, EnterpriseAbout, EnterpriseAddress, EnterpriseTextInfo } from './styles';
+import { Container, TextHeader, Header, Greeting, LogoutButton, TextHeaderBold, SubtitleContainer, Subtitle, Content, NotFoundMessage, EnterpriseList, EnterpriseCard, EnterpriseName, ImageEnterprise, EnterpriseAbout, EnterpriseAddress, EnterpriseTextInfo, ButtonContent } from './styles';
 import api from '../../services/api';
 import { AxiosResponse } from 'axios';
 import { Enterprise } from '../../types/Enterprise';
@@ -12,11 +12,7 @@ import Icon from 'react-native-vector-icons/Feather';
 import Loader from '../../components/Loader';
 import { logout } from '../../store/modules/authentication/actions';
 import { useRoute, RouteProp, useNavigation } from '@react-navigation/native';
-
-interface CustomParams{
-  enterpriseName: string;
-  typeId: number;
-}
+import Button from '../../components/Button';
 
 interface IResponse{
   enterprises: Enterprise[];
@@ -31,22 +27,15 @@ const EnterprisesList: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [enterprises, setEnterprises] = useState<Enterprise[]>([]);
   const dispatch = useDispatch();
-  const [enterpriseName, setEnterpriseName] = useState("");
-  const [enterpriseType, setEnterpriseType] = useState(0);
 
   const route = useRoute<RouteProp<any, any>>();
   const navigation = useNavigation();
 
-  async function loadEnterprises(name = "", typeId = 0){
+  async function loadEnterprises(){
     try {
-      var url = 'api/v1/enterprises';
+      setLoading(true);
 
-      if(name && typeId !== 0){
-        console.log('aq')
-        url = `/api/v1/enterprises?enterprise_types=${typeId}&name=${name}`
-      }
-
-      const response: AxiosResponse<IResponse> = await api.get(url, {
+      const response: AxiosResponse<IResponse> = await api.get('api/v1/enterprises', {
         headers: {
           "access-token": reduxState.access_token,
           "client": reduxState.client,
@@ -71,11 +60,7 @@ const EnterprisesList: React.FC = () => {
   }
 
   useEffect(() => {
-    const routeParams = route.params as CustomParams;
-    setEnterpriseName(routeParams?.enterpriseName);
-    setEnterpriseType(routeParams?.typeId);
-    setLoading(true);
-    loadEnterprises(enterpriseName, enterpriseType);
+    loadEnterprises();
   }, []);
 
   return (
@@ -91,7 +76,6 @@ const EnterprisesList: React.FC = () => {
               <Icon name="power" size={20} color="#FFF"/>
             </LogoutButton>
         </Header>
-
         <SubtitleContainer>
           <Subtitle>Dê uma olhada nas empresas que temos aqui:</Subtitle>
         </SubtitleContainer>
@@ -99,32 +83,24 @@ const EnterprisesList: React.FC = () => {
           {loading && (
             <Loader />
           )}
-          {(enterprises.length === 0 && !loading) ? (
-            <>
-              <NotFoundMessage>Não encotramos nenhuma empresa 😢</NotFoundMessage>
-            </>
-          )
-          :
-          (
-            <EnterpriseList
-                data={enterprises}
-                keyExtractor={(enterprise: Enterprise) => enterprise.id}
-                showsVerticalScrollIndicator={false}
-                renderItem={({ item: enterprise }: EnterpriseFlatList) => (
-                  <EnterpriseCard>
-                    <EnterpriseAbout>
-                      <ImageEnterprise source={{uri: `https://empresas.ioasys.com.br/${enterprise.photo}`}}/>
-                      <EnterpriseTextInfo>
-                        <EnterpriseName>{enterprise.enterprise_name}</EnterpriseName>
-                        <EnterpriseAddress>{enterprise.city} • {enterprise.country}</EnterpriseAddress>
-                        <EnterpriseAddress>{enterprise.enterprise_type.enterprise_type_name}</EnterpriseAddress>
-                      </EnterpriseTextInfo>
-                    </EnterpriseAbout>
-                    <Icon name="chevron-right" size={24} color="#000" onPress={() => handleNavigate(enterprise.id)}/>
-                  </EnterpriseCard>
-                )}
-              />
-          )}
+          <EnterpriseList
+            data={enterprises}
+            keyExtractor={(enterprise: Enterprise) => enterprise.id}
+            showsVerticalScrollIndicator={false}
+            renderItem={({ item: enterprise }: EnterpriseFlatList) => (
+              <EnterpriseCard>
+                <EnterpriseAbout>
+                  <ImageEnterprise source={{uri: `https://empresas.ioasys.com.br/${enterprise.photo}`}}/>
+                  <EnterpriseTextInfo>
+                    <EnterpriseName>{enterprise.enterprise_name}</EnterpriseName>
+                    <EnterpriseAddress>{enterprise.city} • {enterprise.country}</EnterpriseAddress>
+                    <EnterpriseAddress>{enterprise.enterprise_type.enterprise_type_name}</EnterpriseAddress>
+                  </EnterpriseTextInfo>
+                </EnterpriseAbout>
+                <Icon name="chevron-right" size={24} color="#000" onPress={() => handleNavigate(enterprise.id)}/>
+              </EnterpriseCard>
+            )}
+          />
         </Content>
     </Container>
 

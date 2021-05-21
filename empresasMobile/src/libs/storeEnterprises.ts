@@ -1,5 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Enterprise } from '../types/Enterprise';
+import { Alert } from 'react-native';
 
 export async function save(enterprise: Enterprise): Promise<void>{
     try {
@@ -10,16 +11,13 @@ export async function save(enterprise: Enterprise): Promise<void>{
 
         const enterpriseAlreadyExist = oldFavorites.find(e => e.id === enterprise.id);
 
-        console.log('AAAAA', enterpriseAlreadyExist);
-
         if(enterpriseAlreadyExist !== undefined){
-          console.log('AAAAAaasaehausheas');
           throw new Error("Essa empresa já está entre suas favoritas");
         }else{
             oldFavorites.push(enterprise);
 
-            console.log(oldFavorites);
             await AsyncStorage.setItem('@empresasmobile:enterprises', JSON.stringify(oldFavorites));
+            Alert.alert("Favorito adicionado", `${enterprise.enterprise_name} adicionado(a) aos favoritos`);
         }
     } catch (error) {
         throw new Error(error);

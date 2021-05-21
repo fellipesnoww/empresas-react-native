@@ -19,7 +19,9 @@ function EnterprisesStack(){
           options={{
             headerShown: false,
           }}
-          name="EnterprisesList" component={EnterprisesList}
+          name="EnterprisesList"
+          initialParams={{enterpriseName: "", typeId: 0}}
+          component={EnterprisesList}
         />
         <Stack.Screen
           options={{

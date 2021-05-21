@@ -60,7 +60,7 @@ export const EnterpriseCard = styled.View`
   width: 340px;
   height: 75px;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   margin: 5px 0;
   padding: 0 10px;
   border-radius: 8px;
@@ -79,18 +79,19 @@ export const EnterpriseName = styled.Text`
 `;
 
 export const EnterpriseAddress = styled.Text`
-  font-size: 14px;
+  font-size: 16px;
 `;
 
 export const EnterpriseAbout = styled.View`
   flex-direction: row;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const ImageEnterprise = styled.Image`
   width: 50px;
   height: 50px;
   border-radius: 25px;
-  margin-right: 25px;
 `;
 
 

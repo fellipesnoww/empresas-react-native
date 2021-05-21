@@ -108,3 +108,9 @@ export const ImageEnterprise = styled.Image`
   height: 50px;
   border-radius: 25px;
 `;
+
+export const ButtonContent = styled.View`
+  align-items: center;
+  justify-content: center;
+  margin: 10px 0;
+`;

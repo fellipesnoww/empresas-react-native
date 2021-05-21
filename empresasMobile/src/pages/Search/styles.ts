@@ -1,10 +1,14 @@
 import styled from "styled-components/native";
 
+interface CustomProps{
+  dropDownOpen: boolean;
+}
+
 export const Container = styled.View`
   flex: 1;
   align-items: center;
-  justify-content: center;
-  padding: 0 45px;
+
+  margin-top: 45px;
 `;
 
 export const Label = styled.Text`
@@ -22,7 +26,7 @@ export const ContainerInput = styled.View`
   padding: 0 15px;
   border-radius: 8px;
   align-items: center;
-  margin: 25px 0;
+  margin: 10px 0;
   border: #000 solid 2px;
 `;
 
@@ -30,4 +34,28 @@ export const TextButton = styled.Text`
   color: #000;
   font-size: 18px;
   font-weight: bold;
+`;
+
+export const Content = styled.View`
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+  width: 100%;
+`;
+
+export const Header = styled.View`
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 15px;
+  margin-top: 40px;
+`;
+
+
+export const DropdownContent = styled.View<CustomProps>`
+  align-items: center;
+  justify-content: center;
+  padding: 0 45px;
+  margin-bottom: ${props => props.dropDownOpen ? '200px' : '10px'};
+
 `;

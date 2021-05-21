@@ -74,6 +74,7 @@ const Login: React.FC = () => {
             onBlur={() => setEmailFocused(false)}
             focused={emailFocused}
             onChangeText={(value: string) => handleChangeEmailText(value)}
+            autoCapitalize="none"
             keyboardType="email-address"
           />
         </ContainerInput>
